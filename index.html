@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./main.css">
+    </head>
+    <body>
+        <div id="app">
+            <h2>TODO List</h2>
+            <form v-on:submit.prevent>
+                <input type="text" v-model="newItem"/>
+                <button v-on:click="addItem">
+                    Add item
+                </button>
+            </form>
+
+            <ul>
+                <li v-for="(item, index) in items">
+                    <input type="checkbox" v-model:checked="item.checked"/>
+                    <span v-bind:class="{done: item.checked}">{{ item.title }}</span>
+                    <button v-on:click="deleteItem(index)">Delete</button>
+                </li>
+            </ul>
+
+            <pre>{{ $data }}</pre>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="main.js"></script>
+</html>
